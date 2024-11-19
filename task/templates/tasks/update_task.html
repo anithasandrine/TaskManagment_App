@@ -1,0 +1,29 @@
+{% extends 'index.html' %} {% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0"><i class="fa fa-edit"></i>&nbsp;Update Task</h5>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %} {{ form.as_p }}
+            <div class="d-flex justify-content-between mt-4">
+              <button type="submit" class="btn btn-success">
+                <i class="fa fa-save"></i> Save Changes
+              </button>
+              <a
+                href="{% url 'task_detail' object.pk %}"
+                class="btn btn-secondary"
+              >
+                <i class="fa fa-times"></i> Cancel
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

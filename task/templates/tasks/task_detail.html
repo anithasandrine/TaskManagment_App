@@ -1,0 +1,38 @@
+{% extends 'index.html' %} {% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">
+            <i class="fa fa-info-circle"></i>&nbsp;Task Details
+          </h5>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title text-center">{{ task.title }}</h3>
+          <p class="card-text">
+            <strong>Description:</strong> {{ task.description }}
+          </p>
+          <p class="card-text">
+            <strong>Status:</strong>
+            <span
+              class="badge {% if task.status == 'Pending' %} bg-warning {% elif task.status == 'Completed' %} bg-success {% elif task.status == 'In Progress' %} bg-primary {% else %} bg-secondary {% endif %}"
+            >
+              {{ task.get_status_display }}
+            </span>
+          </p>
+          <p class="card-text">
+            <strong>Due Date:</strong> {{ task.due_date|date:"M d, Y H:i" }}
+          </p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <p></p>
+          <a href="{% url 'task_list' %}" class="btn btn-outline-secondary">
+            <i class="fa fa-arrow-left"></i> Back to Task List
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

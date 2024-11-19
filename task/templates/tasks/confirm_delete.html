@@ -1,0 +1,32 @@
+{% extends 'index.html' %} {% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div class="card-header bg-danger text-white">
+          <h5 class="mb-0">
+            <i class="fa fa-exclamation-circle"></i>&nbsp;Confirm Delete
+          </h5>
+        </div>
+        <div class="card-body text-center">
+          <p>
+            Are you sure you want to delete the task
+            <strong>{{ object.title }}</strong>?
+          </p>
+          <div class="d-flex justify-content-center mt-4">
+            <form method="post" class="me-2">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">
+                <i class="fa fa-trash"></i> Yes, Delete
+              </button>
+            </form>
+            <a href="{% url 'task_list' %}" class="btn btn-secondary">
+              <i class="fa fa-times"></i> Cancel
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

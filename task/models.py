@@ -13,6 +13,7 @@ class Tasks(models.Model):
     due_date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=250, choices=statusChoice,default='Pending')
     updadeted = models.DateTimeField(auto_now=True)
+    owner = models.ForeignKey('auth.User', related_name='tasks', on_delete=models.CASCADE)
     
     def __str__(self):
         return self.title

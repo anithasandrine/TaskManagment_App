@@ -1,0 +1,77 @@
+{% extends "index.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container_login">
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 text-center">Log In</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info btn-block" type="submit">Login</button>
+            </div>
+        </form>
+        <div class="border-top pt-3 text-center">
+            <small class="text-muted">
+                Need An Account?
+                <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+            </small>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+      background-color:white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .container_login {
+        width: 100%;
+        max-width: 400px;
+        padding: 10px;
+        align-items: center;
+    }
+    .content-section {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .form-group input {
+        height: 45px; /* Medium size */
+    }
+    .btn {
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+    .border-top {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+    }
+    .text-muted {
+        color: #6c757d;
+    }
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock content %}
